@@ -19,16 +19,15 @@ function Home2() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              <i><b className="purple"> I wrote my first code in 2015. </b></i> Between 2017
-              and 2019, I worked on frontend and backend development in the Mobile App and Web fields. 
-              Towards the end of 2019, I was introduced to Game Development and have been actively developing games since then. 
-              I started my first professional job in the game industry in 2020. I have been a <i><b className="purple"> Professional Game Developer </b></i> for about <i><b className="purple"> 4 years </b></i> now.
+              <i><b className="purple"> I wrote my first code in 2019. </b></i> Between 2020
+              and 2023, I worked on frontend and backend development in Mobile Application and Web areas. Towards the end of 2023, I met artificial intelligence and since then I have been actively developing artificial intelligence projects.
+               <i><b className="purple"> Software Developer </b></i> for about <i><b className="purple"> 4 years </b></i> now.
               <br/>
               <br/>I am fluent in
-              <i><b className="purple"> C#, Unity </b></i>
+              <i><b className="purple"> C, Python </b></i>
               <br />
               <br />
-              I have been actively involved in dozens of game projects so far. While I mostly took on roles as a programmer, I have also assumed the role of team leader in many teams.
+                I have been actively involved in dozens of artificial intelligence projects so far. Although I mostly work as a programmer, I have also taken on the role of team leader in many teams. 
               <i><b className="purple"> Project Management </b></i>, <i><b className="purple"> Strong Communication </b></i> and <i><b className="purple"> Being a Good Teammate </b></i> are the qualities I am proud of.
             </p>
           </Col>
@@ -47,7 +46,7 @@ function Home2() {
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                  href="https://github.com/oguzhandelibas"
+                  href="https://github.com/mertilhans"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -57,7 +56,7 @@ function Home2() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.linkedin.com/in/oguzhan-delibas/"
+                  href="https://www.linkedin.com/in/mert-ilhan-b1408b26a/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
