@@ -10,6 +10,7 @@ import subject42 from "../../Assets/Projects/subject42.png";
 import tetris from "../../Assets/Projects/tetris.png";
 import jamSimulator from "../../Assets/Projects/jamSimulator.png";
 import whoThief from "../../Assets/Projects/whoThief.png";
+import siemensKiosk from "../../Assets/Projects/siemensKiosk.png";
 import funlary from "../../Assets/Projects/funlary.png";
 import tapTap from "../../Assets/Projects/tapTap.png";
 import sweetSwap from "../../Assets/Projects/sweetSwap.png";
@@ -129,6 +130,24 @@ function Projects() {
                 description="In this puzzle-based game, we control our detective character using a turn-based special movement system. There's a case we're trying to solve, and there are many household residents to question! Interrogate the characters and unravel the plot before time runs out!"
                 //ghLink="https://github.com/soumyajit4419/Face_And_Emotion_Detection"
                 demoLink="https://globalgamejam.org/2021/games/missing-artifact-1"
+            />
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <h1 className="project-heading">
+          My <strong className="purple"> Corporate </strong> Projects
+        </h1>
+        <p style={{ color: "white" }}>
+          Here are a few corporate projects I've worked.
+        </p>
+        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          <Col md={10} className="project-card">
+            <ProjectCard
+                imgPath={siemensKiosk}
+                isBlog={false}
+                title="Siemens Kiosk"
+                description={"This project was developed to be offered to customers in Siemens physical stores. Its purpose is to enable users to easily review the list of Siemens products. In the project, functions such as dynamic product management and measuring user preferences are supported by the backend structure."}
             />
           </Col>
         </Row>
@@ -348,6 +367,7 @@ function Projects() {
           </Col>
         </Row>
       </Container>
+    
     </Container>
   );
 }
