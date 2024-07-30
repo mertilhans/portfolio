@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.5c203b32.css",
+    "main.js": "/portfolio/static/js/main.8508b410.js",
+    "static/js/415.4d6acbeb.chunk.js": "/portfolio/static/js/415.4d6acbeb.chunk.js",
+    "static/js/787.1ed0c42c.chunk.js": "/portfolio/static/js/787.1ed0c42c.chunk.js",
+    "static/media/Resume_Mertilhan.pdf": "/portfolio/static/media/Resume_Mertilhan.0e1b338d210602432136.pdf",
+    "static/media/od_avatar.png": "/portfolio/static/media/od_avatar.64c36c9b8281cb4ec9ee.png",
+    "static/media/home-main.svg": "/portfolio/static/media/home-main.541f8179af8209ce03ccf2178fe62dbf.svg",
+    "static/media/about.png": "/portfolio/static/media/about.aee0f771fbfc1e7b8fa8.png",
+    "static/media/od_logo.png": "/portfolio/static/media/od_logo.0c8820165e5d4fd24e79.png",
+    "static/media/home-bg.jpg": "/portfolio/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
+    "static/media/pre.svg": "/portfolio/static/media/pre.d4812f51c8c80976eaab.svg",
+    "index.html": "/portfolio/index.html",
+    "main.5c203b32.css.map": "/portfolio/static/css/main.5c203b32.css.map",
+    "main.8508b410.js.map": "/portfolio/static/js/main.8508b410.js.map",
+    "415.4d6acbeb.chunk.js.map": "/portfolio/static/js/415.4d6acbeb.chunk.js.map",
+    "787.1ed0c42c.chunk.js.map": "/portfolio/static/js/787.1ed0c42c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5c203b32.css",
+    "static/js/main.8508b410.js"
+  ]
+}
