@@ -162,6 +162,7 @@ describe("questions found while reading real answers", () => {
   test("identity questions made only of stop words", () => {
     expect(fresh("who are you").text).toMatch(/^Mert Ilhan/);
     expect(fresh("what are you studying").text).toMatch(/42 Kocaeli/);
+    expect(fresh("where do you study").text).toMatch(/42 Kocaeli/);
   });
 
   test("'projects' is not treated as search content", () => {
@@ -183,6 +184,40 @@ describe("questions found while reading real answers", () => {
 
   test("no invented favourite book", () => {
     expect(fresh("what is your favorite book").text).toMatch(/no favourite on record/);
+  });
+});
+
+describe("nonsense is refused, even after a real question", () => {
+  // Kullanicinin buldugu: ikinci soru anlamsiz olsa da bir sey donuyordu.
+  const junk = [
+    "evet", // "ever" ile tek harf farki
+    "pizza sever misin", // "sever" -> "seven" ortak on eki
+    "is it good", // bir alintidaki "Good programmers"
+    "how old is it",
+    "favori rengin ne", // yalnizca "favor" benzerligi
+    "kac yasindasin", // "kac" sayilacak bir sey olmadan sayma sorusu degil
+    "2+2 kac",
+    "do you like cats",
+    "what time is it",
+  ];
+
+  test.each(junk)("%s", (question) => {
+    expect(fresh(question).unknown).toBe(true);
+    const chat = createChat();
+    chat.ask("tell me about minishell");
+    expect(chat.ask(question).unknown).toBe(true);
+  });
+
+  test("short typo tolerance still works for swapped letters", () => {
+    expect(similarity("dokcer", "docker")).toBeGreaterThan(0);
+    expect(similarity("pyhton", "python")).toBeGreaterThan(0);
+    expect(similarity("evet", "ever")).toBe(0);
+    expect(similarity("sever", "seven")).toBe(0);
+  });
+
+  test("small talk gets a short answer instead of a random match", () => {
+    expect(fresh("how are you doing").text).toMatch(/^All good/);
+    expect(fresh("kanka naber").text).toMatch(/^All good/);
   });
 });
 

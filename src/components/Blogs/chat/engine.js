@@ -43,11 +43,14 @@ const RE = {
   pronoun: /\b(it|its|this|that|bu|bunu|bunun|onu|onun|bunda|onda)\b/,
   list: /\b(which|what projects|what else|list|projects|projeler\w*|hangi\w*|kullanan|kullanilan|kullaniyor\w*|uses?)\b/,
   count: /\b(how many|kac)\b/,
+  // "kac yasindasin" ya da "2+2 kac" bir sayma sorusu degil: sayilacak sey soylenmeli.
+  countable: /\b(projects?|proje\w*|books?|kitap\w*)\b/,
+  smallTalk: /\b(how are you|how is it going|how's it going|whats up|what's up|nasilsin|naber|ne haber|napiyon|napiyorsun|iyi misin|ne yapiyorsun)\b/,
   books: /\b(books?|kitap\w*)\b/,
   related: /\b(relate|related|relates|ilgili|alakali)\b/,
   // Tamamen durak kelimelerden olusan kimlik sorulari ("who are you")
   // aramaya bir sey birakmiyor; kalip olarak yakalaniyorlar.
-  identity: /\b(who are you|who is (he|mert)|about (you|yourself|mert)|introduce yourself|kimsin|mert kim\w*|kendini tanit|what (do|are) you (study|studying|do|doing)|ne okuyorsun|nerede okuyorsun)\b/,
+  identity: /\b(who are you|who is (he|mert)|about (you|yourself|mert)|introduce yourself|kimsin|mert kim\w*|kendini tanit|what (do|are) you (study|studying|do|doing)|where do you study|where are you studying|which school|ne okuyorsun|nerede okuyorsun|hangi okul\w*)\b/,
   favorite: /\b(favou?rite|en sevdi\w*|en begendi\w*)\b/,
 };
 
@@ -287,7 +290,7 @@ export function createChat() {
   }
 
   function count(norm) {
-    if (!RE.count.test(norm)) return null;
+    if (!RE.count.test(norm) || !RE.countable.test(norm)) return null;
 
     if (RE.books.test(norm)) {
       const n = (status) => books.filter((b) => b.status === status).length;
@@ -312,6 +315,13 @@ export function createChat() {
 
     const top = results[0];
     if (top.score < MIN_SCORE) return null;
+
+    // Hicbir kelime birebir ya da ek almis haliyle (kampus+te, kitap+lari:
+    // benzerlik 0.8) tutmadiysa eslesme yalnizca yazim benzerligine
+    // dayaniyor ("pizza sever" -> "seven"): o zaman sorudaki her kelime bir
+    // karsilik bulmali. Guclu bir eslesme varsa en az yarisi yeterli.
+    const strong = top.bestSim >= 0.8;
+    if (strong ? top.matched * 2 < tokens.length : top.matched < tokens.length) return null;
 
     // "Which projects deal with signals?" gibi sorular tek bir projeye
     // degil, konuya dokunan her projeye karsilik gelir.
@@ -361,6 +371,12 @@ export function createChat() {
     if (RE.greeting.test(norm)) {
       return {
         text: "Hey! I'm the guide to this portfolio. Ask me about a project, a book on the shelf, or 42 itself.",
+        followUps: suggestions.slice(0, 3),
+      };
+    }
+    if (RE.smallTalk.test(norm)) {
+      return {
+        text: "All good — I'm a small search engine living inside this page, so I only know what's written on the site. Ask me about a project, a book or 42.",
         followUps: suggestions.slice(0, 3),
       };
     }

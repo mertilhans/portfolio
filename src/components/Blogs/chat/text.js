@@ -33,13 +33,20 @@ const STOP = new Set([
   "using", "there", "one", "ones", "please", "show", "give", "know",
   "more", "i", "we", "our", "at", "by", "from", "as", "into", "than",
   "else", "project", "projects", "deal", "deals", "work", "works",
+  // Kanaat ve dolgu kelimeleri: "is it good" bir alintidaki "Good
+  // programmers" ile eslesiyordu; bunlar soru icerigi degil.
+  "good", "bad", "nice", "cool", "great", "awesome", "old", "ok", "okay",
+  "yes", "no", "lol", "hmm", "really", "very", "so", "like", "love",
+  "want", "need", "never", "always", "ever", "doing", "time", "say",
+  "said", "think",
   // Turkce
   "ne", "nedir", "neler", "hangi", "hangisi", "hangileri", "nasil",
   "nicin", "neden", "kim", "kimdir", "bana", "bir", "bu", "su", "o",
   "ile", "ve", "veya", "icin", "mi", "mu", "anlat", "soyle", "var",
   "yok", "bunlardan", "onlardan", "icinden", "onu", "bunu", "onun",
   "bunun", "da", "de", "ki", "gibi", "daha", "cok", "biraz", "sen",
-  "senin", "ben", "benim", "proje", "projeler", "projelerin",
+  "senin", "ben", "benim", "proje", "projeler", "projelerin", "evet",
+  "hayir", "tamam", "iyi", "guzel", "misin", "musun", "lan", "favori",
 ]);
 
 // Tek harfli kelimeler genelde gurultu, ama "C" ve "R" gercek dil adlari.
@@ -117,10 +124,27 @@ export function similarity(query, term) {
   }
 
   const prefix = commonPrefix(query, term);
-  if (prefix >= 5 || (prefix >= 4 && prefix >= 0.75 * shorter)) return 0.7;
+  // 4 harflik ortak on ek 5 harfli kelimelerde tesadufi ("sever" / "seven").
+  if (prefix >= 5 || (prefix >= 4 && shorter >= 6 && prefix >= 0.75 * shorter)) return 0.7;
 
-  if (shorter >= 4 && editDistance(query, term, 1) <= 1) return 0.7;
+  /*
+    Kisa kelimelerde tek harf farki cok sey eslestiriyordu: "evet" -> "ever",
+    "sever" -> "never". Bu yuzden 4-5 harfte yalnizca yan yana iki harfin
+    yer degistirmesi (dokcer tipi hata), 6 harften itibaren tek harf, 8
+    harften itibaren iki harf farki kabul ediliyor.
+  */
+  if (shorter >= 4 && shorter <= 5 && isTransposition(query, term)) return 0.7;
+  if (shorter >= 6 && editDistance(query, term, 1) <= 1) return 0.7;
   if (shorter >= 8 && editDistance(query, term, 2) <= 2) return 0.5;
 
   return 0;
+}
+
+// Ayni harfler, yalnizca yan yana iki tanesi yer degistirmis mi (ab -> ba)?
+function isTransposition(a, b) {
+  if (a.length !== b.length) return false;
+  let i = 0;
+  while (i < a.length && a[i] === b[i]) i++;
+  if (i >= a.length - 1) return false;
+  return a[i] === b[i + 1] && a[i + 1] === b[i] && a.slice(i + 2) === b.slice(i + 2);
 }
