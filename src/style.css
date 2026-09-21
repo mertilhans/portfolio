@@ -248,6 +248,10 @@ button:focus {
   background-size: cover !important;
   width: 100%;
   height: 100%;
+  /* Parcacik katmani sayfanin tamamini kapliyor; pointer-events olmadan
+     altindaki her link ve butonun tiklamasini yutuyordu. Katman salt
+     dekoratif oldugu icin fareyi tamamen gecirgen yapiyoruz. */
+  pointer-events: none !important;
 }
 
 .home-header {
@@ -308,6 +312,10 @@ button:focus {
 .myAvtar {
   justify-content: center !important;
   padding-top: 9em !important;
+}
+
+.myAvtar img {
+  border-radius: 50%;
 }
 
 @media (max-width: 767px) {
@@ -598,92 +606,6 @@ button:focus {
     padding-top: 0 !important;
   }
 }
-/* --------- */
-/* Resume */
-/* --------- */
-
-.resume-section {
-  position: relative !important;
-  padding-top: 110px !important;
-  padding-bottom: 30px !important;
-  background-image: var(--section-background-color) !important;
-  color: white !important;
-}
-
-.resume {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  justify-content: center;
-}
-
-.resume-left {
-  padding-right: 80px !important;
-}
-
-.resume-right {
-  padding-left: 80px !important;
-}
-
-@media (max-width: 767px) {
-  .resume-left {
-    padding-right: 15px !important;
-    padding-left: 15px !important;
-  }
-
-  .resume-right {
-    padding-right: 15px !important;
-    padding-left: 15px !important;
-  }
-}
-.resume .resume-title {
-  font-size: 2em;
-  font-weight: 700;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.resume .resume-item {
-  padding: 0 0 10px 25px;
-  margin-top: -2px;
-  border-left: 2px solid #8a49a8;
-  position: relative;
-}
-
-.resume .resume-item .resume-title {
-  line-height: 18px;
-  font-size: 0.9em;
-  background: #5234795d;
-  padding: 8px 15px;
-  display: inline-block;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.resume .resume-item ul {
-  padding-left: 20px;
-  text-align: justify;
-}
-
-.resume .resume-item ul li {
-  padding-bottom: 10px;
-  list-style: none;
-}
-
-.resume .resume-item:last-child {
-  padding-bottom: 0;
-}
-
-.resume .resume-item::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50px;
-  left: -9px;
-  top: 0;
-  background: #fff;
-  border: 2px solid #8a49a8;
-}
 
 .like-item {
   padding-top: 10px !important;
@@ -740,4 +662,1547 @@ button:focus {
 }
 .fork-btn-inner::after {
   display: none !important;
+}
+
+/* --------- */
+/* Projects  */
+/* --------- */
+
+.project-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 26px;
+  padding-bottom: 6px;
+}
+
+.project-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: 1px solid rgba(197, 115, 230, 0.45);
+  border-radius: 999px;
+  background: transparent;
+  color: #d5d5d5;
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease 0s;
+}
+
+.project-filter-btn:hover {
+  border-color: rgba(197, 115, 230, 0.9);
+  color: white;
+}
+
+.project-filter-btn.active {
+  background-color: #623686;
+  border-color: #623686;
+  color: white;
+}
+
+.project-filter-count {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.78em;
+  line-height: 1.6;
+}
+
+/* Kapak: her kartin gradyani projectData'daki accent renginden uretiliyor,
+   bu yuzden burada yalnizca olcu ve yerlesim tanimli. */
+.project-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom: 1px solid rgba(197, 115, 230, 0.25);
+}
+
+.project-cover svg {
+  width: 54px;
+  height: 54px;
+  opacity: 0.95;
+}
+
+.project-title {
+  font-size: 1.25em !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  margin-bottom: 10px !important;
+}
+
+.project-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-bottom: 12px;
+  color: #b7a7c4;
+  font-size: 0.82em;
+}
+
+.project-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.project-lang-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.project-description {
+  text-align: left !important;
+  color: #d8d8d8 !important;
+  font-size: 0.93em !important;
+  line-height: 1.6 !important;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 18px;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 11px;
+  border: 1px solid rgba(197, 115, 230, 0.35);
+  border-radius: 999px;
+  color: #c9a8e0;
+  font-size: 0.76em;
+}
+
+/* Etiket logolari metinle ayni renkte kalir; kartin rengini
+   bozmamak icin marka renklerini almiyorlar. */
+.project-tag-icon {
+  width: 1.05em;
+  height: 1.05em;
+  flex: 0 0 auto;
+}
+
+/* Dil rozetindeki logo, metinden bir tik buyuk durmali. */
+.project-stat svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 767px) {
+  .project-cover {
+    height: 120px;
+  }
+
+  .project-filter {
+    gap: 8px;
+  }
+
+  .project-filter-btn {
+    padding: 6px 14px;
+    font-size: 0.85em;
+  }
+}
+
+/* --------------- */
+/* Project detail  */
+/* --------------- */
+
+.project-detail-section {
+  padding-top: 120px !important;
+}
+
+.project-detail-section > .container {
+  text-align: left;
+}
+
+.project-back {
+  display: inline-flex;
+  align-items: center;
+  color: #c9a8e0 !important;
+  text-decoration: none !important;
+  font-size: 0.95em;
+  transition: color 0.25s ease 0s;
+}
+
+.project-back:hover {
+  color: var(--imp-text-color) !important;
+}
+
+.project-cover-link,
+.project-title-link {
+  display: block;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.project-title-link:hover {
+  color: var(--imp-text-color) !important;
+}
+
+.project-detail-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 22px;
+  padding: 34px;
+  border: 1px solid rgba(197, 115, 230, 0.25);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.project-detail-icon {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+}
+
+.project-detail-heading {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.project-detail-heading h1 {
+  font-size: 2em;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.project-detail-heading > p {
+  color: #d3d3d3;
+  font-size: 1em;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* README ve elle yazilan icerik ayni kutuyu paylasir. */
+.project-readme {
+  margin-top: 34px;
+  padding: 30px 34px;
+  border: 1px solid rgba(197, 115, 230, 0.22);
+  border-radius: 10px;
+  background: rgba(15, 9, 24, 0.55);
+  color: #d5d5d5;
+  text-align: left;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.project-readme-source {
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(197, 115, 230, 0.18);
+  color: #9d8aab;
+  font-size: 0.82em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.project-readme-note {
+  color: #a495b3;
+  font-style: italic;
+  padding-top: 20px;
+}
+
+.project-overview {
+  font-size: 1.05em;
+  color: #e0d8e8;
+  padding-bottom: 8px;
+}
+
+.project-highlight h2 {
+  font-size: 1.15em;
+  font-weight: 600;
+  color: var(--imp-text-color);
+  margin-top: 26px;
+  margin-bottom: 8px;
+}
+
+.project-highlight p {
+  margin-bottom: 0;
+}
+
+/* GitHub'in render ettigi HTML kendi stilini getirmiyor; koyu tema icin
+   burada bicimlendiriliyor. */
+.project-readme h1,
+.project-readme h2,
+.project-readme h3,
+.project-readme h4 {
+  color: white;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.project-readme h1 {
+  font-size: 1.7em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(197, 115, 230, 0.2);
+}
+
+.project-readme h2 {
+  font-size: 1.35em;
+}
+
+.project-readme h3 {
+  font-size: 1.12em;
+}
+
+.project-readme a {
+  color: var(--imp-text-color);
+  text-decoration: none;
+}
+
+.project-readme a:hover {
+  text-decoration: underline;
+}
+
+/* GitHub her basligin yanina bir capa linki koyuyor; koyu zeminde
+   anlamsiz bir ikon olarak duruyor. */
+.project-readme .anchor,
+.project-readme .octicon-link {
+  display: none !important;
+}
+
+/* README gorselleri cogu zaman tam cozunurlukte; yuksekligi de
+   sinirlamazsak tek bir logo ekranin tamamini kapliyor. width/height
+   auto kalarak en-boy orani korunuyor. */
+.project-readme img {
+  max-width: 100%;
+  max-height: 440px;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+/* Rozet gorselleri (shields.io) satir ici kalmali, buyutulmemeli. */
+.project-readme a > img {
+  margin: 2px 0;
+}
+
+.project-readme code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(199, 112, 240, 0.14);
+  color: #e6c9f7;
+  font-size: 0.88em;
+}
+
+.project-readme pre {
+  padding: 16px 18px;
+  border: 1px solid rgba(197, 115, 230, 0.18);
+  border-radius: 8px;
+  background: rgba(8, 5, 14, 0.75);
+  overflow-x: auto;
+}
+
+.project-readme pre code {
+  padding: 0;
+  background: transparent;
+  color: #ddd2e8;
+}
+
+.project-readme blockquote {
+  margin: 16px 0;
+  padding: 4px 18px;
+  border-left: 3px solid rgba(197, 115, 230, 0.5);
+  color: #bdb0c9;
+}
+
+.project-readme ul,
+.project-readme ol {
+  padding-left: 22px;
+  margin-bottom: 14px;
+}
+
+.project-readme li {
+  margin-bottom: 6px;
+}
+
+.project-readme hr {
+  border: none;
+  border-top: 1px solid rgba(197, 115, 230, 0.2);
+  margin: 26px 0;
+}
+
+/* Genis tablolar sayfayi yatayda tasirmasin diye kendi kaydirma
+   kutusunda duruyor. */
+.project-readme table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin-bottom: 18px;
+}
+
+.project-readme th,
+.project-readme td {
+  padding: 8px 12px;
+  border: 1px solid rgba(197, 115, 230, 0.2);
+}
+
+.project-readme th {
+  background: rgba(199, 112, 240, 0.1);
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .project-detail-hero {
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+  }
+
+  .project-readme {
+    padding: 22px 18px;
+  }
+
+  .project-detail-heading h1 {
+    font-size: 1.6em;
+  }
+}
+
+/* Devam eden ya da deposu olmayan projeler icin durum rozeti. */
+.project-status {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 10px;
+  border: 1px solid rgba(197, 115, 230, 0.4);
+  border-radius: 999px;
+  background: rgba(199, 112, 240, 0.12);
+  color: #d7b6ec;
+  font-size: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+/* --------------- */
+/* Certifications  */
+/* --------------- */
+
+.certifications-heading {
+  padding-top: 20px !important;
+  padding-bottom: 10px !important;
+}
+
+.certification-col {
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+.certification-link {
+  display: block;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.certification-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  height: 100%;
+  padding: 22px;
+  border: 1px solid rgba(197, 115, 230, 0.28);
+  border-radius: 10px;
+  background: rgba(15, 9, 24, 0.5);
+  text-align: left;
+  transition: all 0.3s ease 0s;
+}
+
+.certification-link:hover .certification-card {
+  border-color: rgba(197, 115, 230, 0.6);
+  box-shadow: 0 3px 4px 3px rgba(119, 53, 136, 0.35);
+}
+
+.certification-icon {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  color: var(--imp-text-color);
+}
+
+.certification-body {
+  min-width: 0;
+}
+
+.certification-body h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.certification-meta {
+  color: #b7a7c4;
+  font-size: 0.85em;
+  margin-bottom: 12px;
+}
+
+.certification-card .project-tags {
+  padding-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .certification-card {
+    padding: 18px;
+  }
+}
+
+/* ------------------ */
+/* "Built with" bloku */
+/* ------------------ */
+
+.project-stack {
+  margin-top: 34px;
+  padding: 28px 32px;
+  border: 1px solid rgba(197, 115, 230, 0.22);
+  border-radius: 10px;
+  background: rgba(15, 9, 24, 0.55);
+  text-align: left;
+}
+
+.project-stack-heading {
+  font-size: 1.3em !important;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 22px;
+}
+
+.project-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px 28px;
+}
+
+.project-stack-name {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: white;
+  font-size: 0.98em;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.project-stack-name svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+}
+
+.project-stack-version {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(199, 112, 240, 0.16);
+  color: #d7b6ec;
+  font-size: 0.72em;
+  font-weight: 500;
+}
+
+.project-stack-role {
+  color: #bdb0c9;
+  font-size: 0.86em;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .project-stack {
+    padding: 22px 18px;
+  }
+
+  .project-stack-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* ─────────────── */
+/*  Blogs / Notes  */
+/* ─────────────── */
+
+.blogs-subheading {
+  padding-top: 50px !important;
+  padding-bottom: 6px !important;
+}
+
+.quote-wall {
+  margin-top: 34px;
+}
+
+.quote-feature {
+  position: relative;
+  padding: 44px 46px 34px;
+  border: 1px solid rgba(197, 115, 230, 0.26);
+  border-radius: 14px;
+  background: radial-gradient(
+      circle at 12% 18%,
+      rgba(199, 112, 240, 0.18),
+      transparent 58%
+    ),
+    linear-gradient(135deg, #1d1229 0%, #2a1739 100%);
+  text-align: left;
+}
+
+.quote-mark {
+  width: 30px;
+  height: 30px;
+  color: rgba(199, 112, 240, 0.55);
+  margin-bottom: 16px;
+}
+
+.quote-feature blockquote {
+  color: #f0e9f5;
+  font-size: 1.45em;
+  font-weight: 300;
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+
+.quote-credit {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.95em;
+}
+
+.quote-source {
+  color: #a495b3;
+  font-size: 0.85em;
+}
+
+.quote-note {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(197, 115, 230, 0.16);
+  color: #bdb0c9;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+.quote-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.quote-chip {
+  padding: 6px 15px;
+  border: 1px solid rgba(197, 115, 230, 0.32);
+  border-radius: 999px;
+  background: transparent;
+  color: #bfa9d2;
+  font-size: 0.85em;
+  transition: all 0.25s ease 0s;
+}
+
+.quote-chip:hover {
+  border-color: rgba(197, 115, 230, 0.75);
+  color: white;
+}
+
+.quote-chip.active {
+  background-color: #623686;
+  border-color: #623686;
+  color: white;
+}
+
+.shelf {
+  padding-top: 26px;
+}
+
+.shelf-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  color: #d6c6e4;
+  font-size: 1.05em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-bottom: 6px;
+}
+
+.shelf-count {
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: rgba(199, 112, 240, 0.16);
+  font-size: 0.8em;
+}
+
+.book-col {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+.book-card {
+  display: flex;
+  height: 100%;
+  border: 1px solid rgba(197, 115, 230, 0.24);
+  border-radius: 10px;
+  background: rgba(15, 9, 24, 0.55);
+  overflow: hidden;
+  transition: all 0.3s ease 0s;
+}
+
+.book-card:hover {
+  border-color: rgba(197, 115, 230, 0.55);
+  transform: translateY(-3px);
+}
+
+.book-spine {
+  flex: 0 0 6px;
+  background: linear-gradient(
+    to bottom,
+    rgba(199, 112, 240, 0.9),
+    rgba(98, 54, 134, 0.7)
+  );
+}
+
+.book-reading .book-spine {
+  background: linear-gradient(
+    to bottom,
+    rgba(159, 122, 234, 0.9),
+    rgba(72, 46, 120, 0.7)
+  );
+}
+
+.book-next .book-spine {
+  background: rgba(197, 115, 230, 0.22);
+}
+
+.book-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 22px 24px;
+  text-align: left;
+}
+
+.book-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 14px;
+}
+
+.book-icon {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  color: var(--imp-text-color);
+}
+
+.book-body h3 {
+  font-size: 1.08em;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 3px;
+  line-height: 1.35;
+}
+
+.book-subtitle {
+  color: #b0a0be;
+  font-size: 0.82em;
+  font-style: italic;
+  margin-bottom: 3px;
+}
+
+.book-authors {
+  color: #a495b3;
+  font-size: 0.83em;
+  margin-bottom: 0;
+}
+
+.book-takeaway {
+  color: #cfc5d8;
+  font-size: 0.9em;
+  line-height: 1.62;
+  padding-bottom: 14px;
+}
+
+.book-used {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding-top: 14px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(197, 115, 230, 0.16);
+}
+
+.book-used-label {
+  color: #9d8aab;
+  font-size: 0.74em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.book-used-link {
+  padding: 2px 10px;
+  border: 1px solid rgba(197, 115, 230, 0.3);
+  border-radius: 999px;
+  color: #c9a8e0 !important;
+  font-size: 0.78em;
+  text-decoration: none !important;
+  transition: all 0.25s ease 0s;
+}
+
+.book-used-link:hover {
+  border-color: rgba(197, 115, 230, 0.8);
+  color: white !important;
+}
+
+.chatbot {
+  margin-top: 28px;
+  border: 1px solid rgba(197, 115, 230, 0.26);
+  border-radius: 14px;
+  background: rgba(13, 8, 21, 0.72);
+  overflow: hidden;
+  text-align: left;
+}
+
+.chatbot-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(197, 115, 230, 0.2);
+  background: rgba(199, 112, 240, 0.07);
+}
+
+.chatbot-header svg {
+  width: 26px;
+  height: 26px;
+  color: var(--imp-text-color);
+  flex: 0 0 auto;
+}
+
+.chatbot-header h3 {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.chatbot-header p {
+  color: #a495b3;
+  font-size: 0.82em;
+  margin-bottom: 0;
+}
+
+.chatbot-log {
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chat-message {
+  max-width: 82%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.92em;
+  line-height: 1.6;
+}
+
+.chat-message p {
+  margin-bottom: 0;
+}
+
+.chat-bot {
+  align-self: flex-start;
+  border: 1px solid rgba(197, 115, 230, 0.22);
+  background: rgba(199, 112, 240, 0.08);
+  color: #d8cee2;
+  border-bottom-left-radius: 4px;
+}
+
+.chat-user {
+  align-self: flex-end;
+  background-color: #623686;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-link {
+  display: inline-block;
+  margin-top: 9px;
+  color: var(--imp-text-color) !important;
+  font-size: 0.9em;
+  text-decoration: none !important;
+}
+
+.chat-link:hover {
+  text-decoration: underline !important;
+}
+
+.chatbot-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 24px 16px;
+}
+
+.chat-suggestion {
+  padding: 5px 13px;
+  border: 1px solid rgba(197, 115, 230, 0.28);
+  border-radius: 999px;
+  background: transparent;
+  color: #b9a4cc;
+  font-size: 0.8em;
+  transition: all 0.25s ease 0s;
+}
+
+.chat-suggestion:hover {
+  border-color: rgba(197, 115, 230, 0.7);
+  color: white;
+}
+
+.chatbot-input {
+  display: flex;
+  gap: 10px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid rgba(197, 115, 230, 0.18);
+}
+
+.chatbot-input input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 10px 16px;
+  border: 1px solid rgba(197, 115, 230, 0.3);
+  border-radius: 999px;
+  background: rgba(8, 5, 14, 0.7);
+  color: white;
+  font-size: 0.92em;
+}
+
+.chatbot-input input::placeholder {
+  color: #8d7d9b;
+}
+
+.chatbot-input input:focus {
+  outline: none;
+  border-color: rgba(197, 115, 230, 0.8);
+}
+
+.chatbot-input button {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: #623686;
+  color: white;
+  transition: background-color 0.25s ease 0s;
+}
+
+.chatbot-input button:hover {
+  background-color: #6d20c5;
+}
+
+@media (max-width: 767px) {
+  .quote-feature {
+    padding: 30px 22px 24px;
+  }
+
+  /* Telefonda on buton alt alta dizilince bir ekran boyu yer kapliyordu;
+     yatay kaydirilan tek bir serit ayni isi cok daha az yerle goruyor.
+     Tasma kendi kutusunda kaliyor, sayfa yatayda kaymiyor. */
+  .quote-picker {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .quote-picker::-webkit-scrollbar {
+    display: none;
+  }
+
+  .quote-chip {
+    flex: 0 0 auto;
+  }
+
+  .quote-feature blockquote {
+    font-size: 1.12em;
+  }
+
+  .book-body {
+    padding: 18px 18px;
+  }
+
+  .chatbot-log {
+    padding: 18px 16px;
+    max-height: 300px;
+  }
+
+  .chatbot-suggestions,
+  .chatbot-input {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .chat-message {
+    max-width: 92%;
+  }
+}
+
+/* ─────────────────── */
+/*  WURI siralamasi    */
+/* ─────────────────── */
+
+.wuri {
+  margin-top: 30px;
+  padding: 38px 40px 30px;
+  border: 1px solid rgba(197, 115, 230, 0.26);
+  border-radius: 14px;
+  background: radial-gradient(
+      circle at 50% 0%,
+      rgba(199, 112, 240, 0.16),
+      transparent 60%
+    ),
+    rgba(13, 8, 21, 0.72);
+}
+
+.wuri-intro {
+  max-width: 720px;
+  margin: 0 auto 34px;
+}
+
+.wuri-kicker {
+  color: #a495b3;
+  font-size: 0.78em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.wuri-intro h2 {
+  color: white;
+  font-size: 1.55em;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.wuri-lead {
+  color: #cfc5d8;
+  font-size: 0.98em;
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+/* Podyum: basamak yukseklikleri siralamayi gosteriyor, 42 mor ve parlak. */
+.wuri-podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.wuri-step {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.wuri-step-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 0 6px 12px;
+  text-align: center;
+}
+
+.wuri-trophy {
+  width: 26px;
+  height: 26px;
+  color: #d9b35a;
+  margin-bottom: 4px;
+}
+
+.wuri-name {
+  color: white;
+  font-size: 0.95em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.wuri-country {
+  color: #9d8aab;
+  font-size: 0.76em;
+}
+
+.wuri-block {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 14px;
+  border: 1px solid rgba(197, 115, 230, 0.28);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(199, 112, 240, 0.14),
+    rgba(98, 54, 134, 0.08)
+  );
+}
+
+.wuri-step-1 .wuri-block {
+  height: 150px;
+}
+
+.wuri-step-2 .wuri-block {
+  height: 115px;
+}
+
+.wuri-step-3 .wuri-block {
+  height: 90px;
+}
+
+.wuri-rank {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 2.1em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.wuri-step-highlight .wuri-name {
+  color: var(--imp-text-color);
+  font-size: 1.25em;
+}
+
+.wuri-step-highlight .wuri-block {
+  border-color: rgba(199, 112, 240, 0.85);
+  background: linear-gradient(
+    to bottom,
+    rgba(199, 112, 240, 0.55),
+    rgba(98, 54, 134, 0.35)
+  );
+  box-shadow: 0 0 28px rgba(199, 112, 240, 0.35);
+}
+
+.wuri-step-highlight .wuri-rank {
+  color: white;
+}
+
+/* Podyumun tabani */
+.wuri-podium::after {
+  content: none;
+}
+
+.wuri-rest {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px 0 6px;
+  border-top: 2px solid rgba(199, 112, 240, 0.35);
+}
+
+.wuri-rest-label {
+  color: #a495b3;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.wuri-rest-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+}
+
+.wuri-rest-item {
+  padding: 6px 14px;
+  border: 1px solid rgba(197, 115, 230, 0.22);
+  border-radius: 999px;
+  color: #bdb0c9;
+  font-size: 0.85em;
+}
+
+.wuri-history {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.wuri-year {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 170px;
+  padding: 14px 20px;
+  border: 1px solid rgba(197, 115, 230, 0.24);
+  border-radius: 10px;
+  background: rgba(199, 112, 240, 0.06);
+}
+
+.wuri-year-num {
+  color: #a495b3;
+  font-size: 0.8em;
+  letter-spacing: 0.08em;
+}
+
+.wuri-year-rank {
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.wuri-year-note {
+  color: #bdb0c9;
+  font-size: 0.8em;
+}
+
+.wuri-sources {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 14px;
+  margin-top: 26px;
+  font-size: 0.74em;
+  color: #8d7d9b;
+}
+
+.wuri-sources a {
+  color: #b39ac7 !important;
+  text-decoration: none !important;
+}
+
+.wuri-sources a:hover {
+  color: var(--imp-text-color) !important;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 767px) {
+  .wuri {
+    padding: 28px 16px 22px;
+  }
+
+  .wuri-intro h2 {
+    font-size: 1.25em;
+  }
+
+  .wuri-podium {
+    gap: 8px;
+  }
+
+  .wuri-name {
+    font-size: 0.78em;
+  }
+
+  .wuri-step-highlight .wuri-name {
+    font-size: 1.05em;
+  }
+
+  .wuri-country {
+    display: none;
+  }
+
+  .wuri-step-1 .wuri-block {
+    height: 110px;
+  }
+
+  .wuri-step-2 .wuri-block {
+    height: 85px;
+  }
+
+  .wuri-step-3 .wuri-block {
+    height: 66px;
+  }
+
+  .wuri-rank {
+    font-size: 1.6em;
+  }
+}
+
+/* WURI: ilk 10'daki diger kurumlar, podyumun devami gibi bir tablo */
+.wuri-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+  text-align: left;
+}
+
+.wuri-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid rgba(197, 115, 230, 0.22);
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    rgba(199, 112, 240, 0.1),
+    rgba(15, 9, 24, 0.4)
+  );
+  transition: all 0.25s ease 0s;
+}
+
+.wuri-row:hover {
+  border-color: rgba(197, 115, 230, 0.6);
+  transform: translateY(-2px);
+}
+
+.wuri-mono {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  height: 44px;
+  padding: 0 10px;
+  border: 1px solid rgba(197, 115, 230, 0.4);
+  border-radius: 10px;
+  background: rgba(98, 54, 134, 0.35);
+  color: white;
+  font-size: 0.88em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.wuri-row-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wuri-row-name {
+  color: #ece4f3;
+  font-size: 0.92em;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.wuri-row-country {
+  color: #9d8aab;
+  font-size: 0.76em;
+}
+
+.wuri-row-tag {
+  flex: 0 0 auto;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(199, 112, 240, 0.16);
+  color: #d7b6ec;
+  font-size: 0.72em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .wuri-board {
+    grid-template-columns: 1fr;
+  }
+
+  .wuri-mono {
+    min-width: 56px;
+    height: 40px;
+    font-size: 0.8em;
+  }
+}
+
+/* Ana sayfadaki sosyal ikonlarin altinda acik yazilmis e-posta:
+   ikonu tanimayan ya da adresi kopyalamak isteyen icin. */
+.home-contact-email {
+  padding-top: 14px;
+  font-size: 0.95em;
+}
+
+.home-contact-email a {
+  color: #c9a8e0 !important;
+  text-decoration: none !important;
+  border-bottom: 1px dashed rgba(199, 112, 240, 0.5);
+}
+
+.home-contact-email a:hover {
+  color: var(--imp-text-color) !important;
+}
+
+/* ── Chatbot: ileri seviye eklentiler ── */
+
+.chatbot-header-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.chatbot-reset {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(197, 115, 230, 0.3);
+  border-radius: 50%;
+  background: transparent;
+  color: #bfa9d2;
+  transition: all 0.25s ease 0s;
+}
+
+.chatbot-reset:hover {
+  border-color: rgba(197, 115, 230, 0.8);
+  color: white;
+}
+
+.chatbot-reset svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Sohbet icindeki proje kartlari */
+.chat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.chat-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid rgba(197, 115, 230, 0.25);
+  border-radius: 10px;
+  background: rgba(13, 8, 21, 0.55);
+  text-decoration: none !important;
+  transition: all 0.2s ease 0s;
+}
+
+.chat-card:hover {
+  border-color: rgba(197, 115, 230, 0.7);
+  transform: translateY(-1px);
+}
+
+.chat-card-icon {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-radius: 8px;
+  background: rgba(199, 112, 240, 0.08);
+}
+
+.chat-card-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.chat-card-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-card-title {
+  color: white;
+  font-size: 0.9em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.chat-card-note {
+  color: #a495b3;
+  font-size: 0.74em;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-more {
+  align-self: center;
+  color: var(--imp-text-color) !important;
+  font-size: 0.8em;
+  text-decoration: none !important;
+  padding: 4px 6px;
+}
+
+/* "Yaziyor" gostergesi */
+.chat-typing {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 14px 16px;
+}
+
+.chat-typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(199, 112, 240, 0.8);
+  animation: chat-bounce 1.1s infinite ease-in-out;
+}
+
+.chat-typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.chat-typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes chat-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  30% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-typing span {
+    animation: none;
+  }
+}
+
+.chat-suggestion:disabled,
+.chatbot-input button:disabled {
+  opacity: 0.45;
+  cursor: default;
 }

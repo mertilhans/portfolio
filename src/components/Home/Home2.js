@@ -2,12 +2,12 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import myImg from "../../Assets/od_avatar.png";
 import Tilt from "react-parallax-tilt";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
+import { AiFillGithub, AiFillInstagram, AiOutlineMail } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
+
+// Deneyim suresi sabit yazilinca her yil eskiyordu ("4 years" 2026'da
+// yanlisti). 2021 ilk kodun yazildigi yil.
+const YEARS_DEVELOPING = new Date().getFullYear() - 2021;
 
 function Home2() {
   return (
@@ -19,12 +19,18 @@ function Home2() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              <i><b className="purple"> I wrote my first code in 2019. </b></i> Between 2020
+              <i><b className="purple"> I wrote my first code in 2021. </b></i> Between 2021
               and 2023, I worked on frontend and backend development in Mobile Application and Web areas. Towards the end of 2023, I met artificial intelligence and since then I have been actively developing artificial intelligence projects.
-               <i><b className="purple"> Software Developer </b></i> for about <i><b className="purple"> 4 years </b></i> now.
+               <i><b className="purple"> Software Developer </b></i> for about <i><b className="purple"> {YEARS_DEVELOPING} years </b></i> now.
+              <br/>
+              <br/>Today I am a student at
+              <i><b className="purple"> 42 Kocaeli</b></i>, the peer-to-peer
+              coding school ranked 3rd in the world for innovation, where
+              most of my work is systems programming in
+              <i><b className="purple"> C and C++</b></i>.
               <br/>
               <br/>I am fluent in
-              <i><b className="purple"> C, Python </b></i>
+              <i><b className="purple"> C, C++, Python </b></i>
               <br />
               <br />
                 I have been actively involved in dozens of artificial intelligence projects so far. Although I mostly work as a programmer, I have also taken on the role of team leader in many teams. 
@@ -33,7 +39,7 @@ function Home2() {
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+              <img src={myImg} className="img-fluid" alt="Mert Ilhan" />
             </Tilt>
           </Col>
         </Row>
@@ -56,7 +62,7 @@ function Home2() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.linkedin.com/in/mert-ilhan-b1408b26a/"
+                  href="https://www.linkedin.com/in/mertilhans"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -64,7 +70,29 @@ function Home2() {
                   <FaLinkedinIn />
                 </a>
               </li>
+              <li className="social-icons">
+                <a
+                  href="https://www.instagram.com/mertilhans"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="icon-colour home-social-icons"
+                >
+                  <AiFillInstagram />
+                </a>
+              </li>
+              <li className="social-icons">
+                <a
+                  href="mailto:mertilhanbv@gmail.com"
+                  className="icon-colour home-social-icons"
+                  aria-label="Email"
+                >
+                  <AiOutlineMail />
+                </a>
+              </li>
             </ul>
+            <p className="home-contact-email">
+              <a href="mailto:mertilhanbv@gmail.com">mertilhanbv@gmail.com</a>
+            </p>
           </Col>
         </Row>
       </Container>

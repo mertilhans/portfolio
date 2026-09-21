@@ -25,3 +25,6 @@ yarn-error.log*
 
 Server/node_modules
 Server/config.js
+
+# production build (deployed to gh-pages by `npm run deploy`)
+/build

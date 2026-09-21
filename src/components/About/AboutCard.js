@@ -11,7 +11,10 @@ function AboutCard() {
             Hi, I am <span className="purple">Mert ilhan </span>
             from <span className="purple"> Tekirdag , Turkey.</span>
             <br />
-            Buraya birseyler ekle
+            I wrote my first line of code in <span className="purple">2021</span> and
+            have been building software ever since — these days mostly in
+            <span className="purple"> C and C++</span>, alongside
+            <span className="purple"> artificial intelligence</span> projects.
             <br />
             <br />
             Apart from coding, some other activities that I love to do!
@@ -35,9 +38,9 @@ function AboutCard() {
           </ul>
 
           <p style={{color: "rgb(155 126 172)"}}>
-            "Işık yaradan sızar"{" "}
+            "Talk is cheap. Show me the code."{" "}
           </p>
-          <footer className="blockquote-footer">Mevlana</footer>
+          <footer className="blockquote-footer">Linus Torvalds</footer>
         </blockquote>
       </Card.Body>
     </Card>

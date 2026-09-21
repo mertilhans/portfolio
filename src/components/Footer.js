@@ -1,10 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
+import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
 function Footer() {
@@ -14,16 +10,16 @@ function Footer() {
     <Container fluid className="footer">
       <Row>
         <Col md="4" className="footer-copywright">
-          <h3>Designed and Developed by Oguzhan Delibas</h3>
+          <h3>Designed and Developed by Mert Ilhan</h3>
         </Col>
         <Col md="4" className="footer-copywright">
-          <h3>Copyright © {year} OD Projects</h3>
+          <h3>Copyright © {year} MRT Projects</h3>
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
             <li className="social-icons">
               <a
-                href="https://github.com/oguzhandelibas"
+                href="https://github.com/mertilhans"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -33,12 +29,21 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.linkedin.com/in/oguzhan-delibas/"
+                href="https://www.linkedin.com/in/mertilhans"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
               >
                 <FaLinkedinIn />
+              </a>
+            </li>
+            <li className="social-icons">
+              <a
+                href="mailto:mertilhanbv@gmail.com"
+                style={{ color: "white" }}
+                aria-label="Email"
+              >
+                <AiOutlineMail />
               </a>
             </li>
           </ul>

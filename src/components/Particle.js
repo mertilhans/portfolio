@@ -33,19 +33,8 @@ function Particle() {
             },
           },
         },
-        interactivity: {
-          events: {
-            onclick: {
-              enable: true,
-              mode: "push",
-            },
-          },
-          modes: {
-            push: {
-              particles_nb: 1,
-            },
-          },
-        },
+        // Katman pointer-events:none oldugu icin tiklama olayi hic
+        // ulasmiyor; "tikla, parcacik ekle" ayari bu yuzden kaldirildi.
         retina_detect: true,
       }}
     />
