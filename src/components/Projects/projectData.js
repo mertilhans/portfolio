@@ -423,12 +423,13 @@ const projects = [
   {
     id: "MiniRT",
     repo: "MiniRT",
+    playground: "minirt",
     title: "miniRT",
     category: "42",
     icon: SiC,
     accent: accent.c,
     description:
-      "A ray tracer in C. Parses a scene description, then renders spheres, planes and cylinders with Phong shading, shadows and a configurable camera.",
+      "A ray tracer in C. Parses a scene description, then renders spheres, planes and cylinders with ambient and diffuse lighting, hard shadows and 2×2 supersampling.",
     tags: ["C", "Ray Tracing", "Graphics", "Linear Algebra"],
   },
   {
@@ -487,6 +488,7 @@ const projects = [
   {
     id: "fractol",
     repo: "fractol",
+    playground: "fractol",
     title: "fract-ol",
     category: "42",
     icon: SiC,
@@ -498,16 +500,16 @@ const projects = [
       "A graphical program that renders escape time fractals pixel by pixel and redraws them as you move. The window, event loop and framebuffer all come from MiniLibX, which is vendored into the repository so the project builds without a system wide install.",
     highlights: [
       {
-        title: "Two fractal sets",
-        body: "mandelbrot.c and julia.c each implement their own iteration. The Julia set takes its constant from the command line, so a single binary renders an entire family of shapes rather than one fixed image.",
+        title: "Two fractal sets, zoom at the cursor",
+        body: "mandelbrot.c and julia.c each implement their own iteration. The Julia set takes its constant from the command line, so a single binary renders an entire family of shapes. The mouse wheel zooms 0.9× or 1.1× around the point under the cursor, and WASD or the arrows move the view.",
       },
       {
         title: "Escape time rendering",
-        body: "build_set.c walks every pixel, maps it into the complex plane and iterates until the value escapes or the limit is reached. The iteration count at that point decides the colour, which is what makes the fractal boundary visible.",
+        body: "draw_mandelbrot and draw_julia walk all 800×800 pixels, map each one into the complex plane and iterate until |z| passes 2 or 250 iterations are reached. The colour is iter * 0xFFFFFF / MAX_ITER; that product overflows a 32-bit int from iteration 129 on, and the wrap around is what produces the sharp colour bands.",
       },
       {
         title: "Input guarded up front",
-        body: "error_handle.c validates the fractal name and its parameters before a window is ever opened, so a typo produces a usage message instead of an empty frame.",
+        body: "main.c checks the fractal name and argument count, and ft_atod rejects anything that is not a number, before a window is ever opened. A bare \"Julia\" prints five ready made parameter sets instead of an empty frame.",
       },
       {
         title: "MiniLibX vendored in",

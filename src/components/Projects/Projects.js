@@ -5,6 +5,7 @@ import ProjectCard from "./ProjectCard";
 import projects, { categories } from "./projectData";
 import { fetchStats, readCache } from "./githubStats";
 import Certifications from "./Certifications";
+import LiveDemos from "./LiveDemos";
 
 function Projects() {
   const [active, setActive] = useState("all");
@@ -44,6 +45,8 @@ function Projects() {
         <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently.
         </p>
+
+        <LiveDemos />
 
         <div className="project-filter">
           {/* Icinde proje kalmayan kategori hic gosterilmiyor; liste

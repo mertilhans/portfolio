@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { AiFillGithub, AiFillStar, AiOutlineArrowLeft } from "react-icons/ai";
@@ -8,6 +8,7 @@ import Particle from "../Particle";
 import projects from "./projectData";
 import { fetchStats, GITHUB_USER } from "./githubStats";
 import techIcon from "./techIcons";
+import playgrounds from "./playground";
 
 /*
   README'yi ham markdown olarak cekip elde ayristirmak yerine GitHub'in
@@ -101,6 +102,7 @@ function ProjectDetail() {
   if (!project) return <Navigate to="/project" replace />;
 
   const Icon = project.icon;
+  const Playground = project.playground && playgrounds[project.playground];
 
   return (
     <Container fluid className="project-section project-detail-section">
@@ -194,6 +196,13 @@ function ProjectDetail() {
             </div>
           </div>
         </div>
+
+        {/* Tarayicida calisan surum: C kodunun JavaScript karsiligi. */}
+        {Playground && (
+          <Suspense fallback={<p className="project-readme-note">Loading demo…</p>}>
+            <Playground key={project.id} />
+          </Suspense>
+        )}
 
         {/* "Built with": yalnizca stack tanimlanmis projelerde cikar. */}
         {project.stack && (

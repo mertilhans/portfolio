@@ -43,6 +43,9 @@ function ProjectCard({ project, stats }) {
           {project.status && (
             <span className="project-status">{project.status}</span>
           )}
+          {project.playground && (
+            <span className="project-status project-live-badge">Live demo</span>
+          )}
         </Card.Title>
 
         {/* Canli rozetler: API cevap vermezse stats undefined kalir ve

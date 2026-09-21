@@ -2206,3 +2206,437 @@ button:focus {
   opacity: 0.45;
   cursor: default;
 }
+
+/* --------------------------- */
+/* Project playgrounds (demo)  */
+/* --------------------------- */
+
+.project-live-badge {
+  color: #7ee2b8 !important;
+  border-color: rgba(126, 226, 184, 0.45) !important;
+  background: rgba(126, 226, 184, 0.08) !important;
+}
+
+.playground {
+  margin-top: 34px;
+  padding: 28px 30px 24px;
+  border: 1px solid rgba(197, 115, 230, 0.3);
+  border-radius: 10px;
+  background: rgba(15, 9, 24, 0.6);
+  text-align: left;
+}
+
+.playground-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.35em;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.playground-live {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #7ee2b8;
+  box-shadow: 0 0 0 0 rgba(126, 226, 184, 0.6);
+  animation: playground-pulse 2s infinite;
+}
+
+@keyframes playground-pulse {
+  70% { box-shadow: 0 0 0 8px rgba(126, 226, 184, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(126, 226, 184, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playground-live { animation: none; }
+}
+
+.playground-intro {
+  color: #cfcfcf;
+  font-size: 0.95em;
+  line-height: 1.65;
+  margin-bottom: 18px;
+  max-width: 820px;
+}
+
+.playground-intro code,
+.playground-file-body {
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.playground-intro code {
+  color: #e2c2f5;
+  background: rgba(199, 112, 240, 0.12);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.playground-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-bottom: 14px;
+}
+
+.playground-segment {
+  display: inline-flex;
+  border: 1px solid rgba(197, 115, 230, 0.45);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.playground-segment button,
+.playground-chips button,
+.playground-button,
+.playground-file-toggle {
+  font: inherit;
+  font-size: 0.88em;
+  color: #e6d6f0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.playground-segment button {
+  padding: 6px 16px;
+}
+
+.playground-segment button + button {
+  border-left: 1px solid rgba(197, 115, 230, 0.45);
+}
+
+.playground-segment button.active,
+.playground-chips button.active {
+  background: rgba(199, 112, 240, 0.28);
+  color: white;
+}
+
+.playground-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.playground-chips button {
+  padding: 5px 12px;
+  border: 1px solid rgba(197, 115, 230, 0.35);
+  border-radius: 999px;
+}
+
+.playground-buttons {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.playground-button {
+  min-width: 36px;
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid rgba(197, 115, 230, 0.45);
+  border-radius: 8px;
+  font-size: 1.05em;
+}
+
+.playground-button svg {
+  display: block;
+  margin: 0 auto;
+  font-size: 0.95em;
+}
+
+.playground-button.wide {
+  font-size: 0.88em;
+}
+
+.playground-segment button:hover,
+.playground-chips button:hover,
+.playground-button:hover,
+.playground-file-toggle:hover {
+  background: rgba(199, 112, 240, 0.18);
+  color: white;
+}
+
+.playground button:focus-visible,
+.playground-canvas:focus-visible {
+  outline: 2px solid #c770f0;
+  outline-offset: 2px;
+}
+
+.playground-stage {
+  border: 1px solid rgba(197, 115, 230, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+
+.playground-terminal {
+  padding: 7px 12px;
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.82em;
+  color: #d9c3ea;
+  background: #160d20;
+  border-bottom: 1px solid rgba(197, 115, 230, 0.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playground-prompt {
+  color: #7ee2b8;
+}
+
+.playground-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: grab;
+  touch-action: none;
+}
+
+.playground-canvas:active {
+  cursor: grabbing;
+}
+
+/* fract-ol kare: cok genis ekranda sayfayi kaplamasin. */
+.playground-canvas-square {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.playground-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 16px;
+  margin-top: 10px;
+  font-size: 0.84em;
+  color: #a998b8;
+}
+
+.playground-status {
+  color: #d9c3ea;
+  font-variant-numeric: tabular-nums;
+}
+
+.playground-file {
+  margin-top: 12px;
+}
+
+.playground-file-toggle {
+  padding: 4px 0;
+  color: #c9a8e0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.playground-file-toggle:hover {
+  background: transparent;
+}
+
+.playground-file-body {
+  margin-top: 8px;
+  max-height: 320px;
+  overflow: auto;
+  padding: 14px 16px;
+  font-size: 0.8em;
+  line-height: 1.55;
+  color: #d5d5d5;
+  background: #120b1b;
+  border: 1px solid rgba(197, 115, 230, 0.22);
+  border-radius: 8px;
+}
+
+@media (max-width: 767px) {
+  .playground {
+    padding: 20px 16px 18px;
+  }
+
+  .playground-buttons {
+    margin-left: 0;
+  }
+}
+
+/* ------------------------------------ */
+/* Projects: live demo showcase         */
+/* ------------------------------------ */
+
+.live-demos {
+  margin: 26px auto 34px;
+  padding: 26px 26px 28px;
+  border: 1px solid rgba(126, 226, 184, 0.35);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(126, 226, 184, 0.12), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(199, 112, 240, 0.18), transparent 60%),
+    rgba(15, 9, 24, 0.65);
+  text-align: left;
+}
+
+.live-demos-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-demos-head h2 {
+  margin: 0;
+  font-size: 1.55em;
+  font-weight: 600;
+  color: white;
+}
+
+.live-demos-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #7ee2b8;
+  animation: playground-pulse 2s infinite;
+}
+
+.live-demos-sub {
+  margin: 8px 0 20px;
+  color: #cfcfcf;
+  font-size: 0.98em;
+}
+
+.live-demos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.live-demo-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(197, 115, 230, 0.35);
+  border-radius: 12px;
+  background: #120b1b;
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.live-demo-card:hover,
+.live-demo-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(126, 226, 184, 0.7);
+  box-shadow: 0 14px 34px rgba(126, 226, 184, 0.14);
+}
+
+.live-demo-card:focus-visible {
+  outline: 2px solid #7ee2b8;
+  outline-offset: 3px;
+}
+
+.live-demo-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #000;
+}
+
+.live-demo-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.live-demo-card:hover .live-demo-media img {
+  transform: scale(1.06);
+}
+
+.live-demo-play {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px 7px 10px;
+  border-radius: 999px;
+  background: rgba(10, 6, 16, 0.78);
+  border: 1px solid rgba(126, 226, 184, 0.6);
+  color: #eafff6;
+  font-size: 0.9em;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.live-demo-play svg {
+  font-size: 1.25em;
+  color: #7ee2b8;
+}
+
+.live-demo-card:hover .live-demo-play {
+  background: #7ee2b8;
+  color: #0d0913;
+}
+
+.live-demo-card:hover .live-demo-play svg {
+  color: #0d0913;
+}
+
+.live-demo-body {
+  padding: 14px 18px 16px;
+}
+
+.live-demo-body h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 6px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: white;
+}
+
+.live-demo-lang {
+  padding: 1px 8px;
+  border: 1px solid rgba(197, 115, 230, 0.45);
+  border-radius: 999px;
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.62em;
+  font-weight: 400;
+  color: #d7b6ec;
+}
+
+.live-demo-body p {
+  margin: 0;
+  color: #bdb3c7;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+
+/* Sabit navbar'in altinda kalmasin. */
+.playground {
+  scroll-margin-top: 90px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-demos-dot { animation: none; }
+  .live-demo-card,
+  .live-demo-media img { transition: none; }
+  .live-demo-card:hover { transform: none; }
+  .live-demo-card:hover .live-demo-media img { transform: none; }
+}
+
+@media (max-width: 767px) {
+  .live-demos {
+    padding: 20px 16px 22px;
+  }
+
+  .live-demos-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
