@@ -28,7 +28,7 @@ function ProjectCard({ project, stats }) {
         <div
           className="project-cover"
           style={{
-            background: `radial-gradient(circle at 30% 20%, ${project.accent}40, transparent 60%), linear-gradient(135deg, #1d1229 0%, #2a1739 100%)`,
+            background: `radial-gradient(circle at 30% 20%, ${project.accent}40, transparent 60%), linear-gradient(135deg, #0d0f14 0%, #141925 100%)`,
           }}
         >
           <Icon style={{ color: project.accent }} />

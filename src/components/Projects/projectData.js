@@ -39,18 +39,18 @@ export const categories = [
 ];
 
 /*
-  Kapak gradyanlari ve ikon renkleri. Hepsi sitenin mor temasiyla ayni
-  aileden: ton degisiyor, doygunluk ve parlaklik sabit kaliyor, boylece
-  kartlar tek bir set gibi okunuyor. --imp-text-color (#c770f0) bu
-  paletin merkezi.
+  Kapak gradyanlari ve ikon renkleri. Hepsi sitenin mavi vurgusuyla ayni
+  aileden: ton maviden camgobegine kayiyor, doygunluk ve parlaklik yakin
+  kaliyor, boylece kartlar tek bir set gibi okunuyor. --accent (#4f8cff)
+  bu paletin merkezi.
 */
 const accent = {
-  c: "#9d6ddb",
-  cpp: "#8a72e6",
-  infra: "#a95fd0",
-  web: "#b97ae8",
-  ai: "#c770f0",
-  data: "#a86fe8",
+  c: "#5b9dff",
+  cpp: "#7c9cff",
+  infra: "#38bdf8",
+  web: "#22d3ee",
+  ai: "#4f8cff",
+  data: "#60c5fa",
 };
 
 const projects = [

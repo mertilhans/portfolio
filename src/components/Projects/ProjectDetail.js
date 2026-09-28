@@ -4,7 +4,6 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { AiFillGithub, AiFillStar, AiOutlineArrowLeft } from "react-icons/ai";
 import { BiGitRepoForked } from "react-icons/bi";
 import { CgWebsite } from "react-icons/cg";
-import Particle from "../Particle";
 import projects from "./projectData";
 import { fetchStats, GITHUB_USER } from "./githubStats";
 import techIcon from "./techIcons";
@@ -106,7 +105,6 @@ function ProjectDetail() {
 
   return (
     <Container fluid className="project-section project-detail-section">
-      <Particle />
       <Container>
         <Link to="/project" className="project-back">
           <AiOutlineArrowLeft /> &nbsp;All projects
@@ -115,7 +113,7 @@ function ProjectDetail() {
         <div
           className="project-detail-hero"
           style={{
-            background: `radial-gradient(circle at 18% 25%, ${project.accent}33, transparent 62%), linear-gradient(135deg, #1d1229 0%, #2a1739 100%)`,
+            background: `radial-gradient(circle at 18% 25%, ${project.accent}33, transparent 62%), linear-gradient(135deg, rgba(13, 15, 20, 0.9) 0%, rgba(20, 25, 37, 0.9) 100%)`,
           }}
         >
           <Icon style={{ color: project.accent }} className="project-detail-icon" />

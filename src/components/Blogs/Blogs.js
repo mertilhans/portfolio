@@ -3,7 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { ImQuotesLeft } from "react-icons/im";
 import { BsBookHalf } from "react-icons/bs";
-import Particle from "../Particle";
 import Chatbot from "./Chatbot";
 import WuriRanking from "./WuriRanking";
 import { books, quotes } from "./readingData";
@@ -41,7 +40,6 @@ function Blogs() {
 
   return (
     <Container fluid className="project-section blogs-section">
-      <Particle />
       <Container>
         <h1 className="project-heading">
           Notes &amp; <strong className="purple">Reading</strong>

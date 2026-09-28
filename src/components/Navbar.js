@@ -34,7 +34,8 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand as={Link} to="/" className="d-flex">
-          <img src={logo}  alt="Mert Ilhan logo" width={50} height={50} />
+          <img src={logo} alt="" className="brand-logo" width={34} height={34} />
+          <span>Mert Ilhan</span>
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"

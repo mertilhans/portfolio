@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../Particle";
 import ProjectCard from "./ProjectCard";
 import projects, { categories } from "./projectData";
 import { fetchStats, readCache } from "./githubStats";
@@ -37,7 +36,6 @@ function Projects() {
 
   return (
     <Container fluid className="project-section">
-      <Particle />
       <Container>
         <h1 className="project-heading">
           My Recent <strong className="purple">Works</strong>

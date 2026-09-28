@@ -37,7 +37,7 @@ function AboutCard() {
             </li>
           </ul>
 
-          <p style={{color: "rgb(155 126 172)"}}>
+          <p style={{color: "var(--text-muted)"}}>
             "Talk is cheap. Show me the code."{" "}
           </p>
           <footer className="blockquote-footer">Linus Torvalds</footer>
