@@ -1,31 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.2b4caa42.css",
-    "main.js": "/static/js/main.03f471b9.js",
-    "static/js/415.4d6acbeb.chunk.js": "/static/js/415.4d6acbeb.chunk.js",
-    "static/js/21.dc82b807.chunk.js": "/static/js/21.dc82b807.chunk.js",
-    "static/js/747.364286a5.chunk.js": "/static/js/747.364286a5.chunk.js",
+    "main.css": "/static/css/main.28839268.css",
+    "main.js": "/static/js/main.44598461.js",
+    "static/js/620.86ae60b9.chunk.js": "/static/js/620.86ae60b9.chunk.js",
+    "static/js/390.4ee00cf0.chunk.js": "/static/js/390.4ee00cf0.chunk.js",
     "static/js/787.1ed0c42c.chunk.js": "/static/js/787.1ed0c42c.chunk.js",
     "static/js/566.fcbbbb4a.chunk.js": "/static/js/566.fcbbbb4a.chunk.js",
     "static/media/od_avatar.png": "/static/media/od_avatar.17ced8bd3c2ecbde3c78.png",
-    "static/media/home-main.svg": "/static/media/home-main.541f8179af8209ce03ccf2178fe62dbf.svg",
     "static/media/about.png": "/static/media/about.aee0f771fbfc1e7b8fa8.png",
     "static/media/fractol-julia.jpg": "/static/media/fractol-julia.02e65872973672a60ea2.jpg",
     "static/media/od_logo.png": "/static/media/od_logo.0c8820165e5d4fd24e79.png",
-    "static/media/home-bg.jpg": "/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
     "static/media/minirt-epic.jpg": "/static/media/minirt-epic.8db57fe627ca0c59b0ae.jpg",
-    "static/media/pre.svg": "/static/media/pre.d4812f51c8c80976eaab.svg",
     "index.html": "/index.html",
-    "main.2b4caa42.css.map": "/static/css/main.2b4caa42.css.map",
-    "main.03f471b9.js.map": "/static/js/main.03f471b9.js.map",
-    "415.4d6acbeb.chunk.js.map": "/static/js/415.4d6acbeb.chunk.js.map",
-    "21.dc82b807.chunk.js.map": "/static/js/21.dc82b807.chunk.js.map",
-    "747.364286a5.chunk.js.map": "/static/js/747.364286a5.chunk.js.map",
+    "main.28839268.css.map": "/static/css/main.28839268.css.map",
+    "main.44598461.js.map": "/static/js/main.44598461.js.map",
+    "620.86ae60b9.chunk.js.map": "/static/js/620.86ae60b9.chunk.js.map",
+    "390.4ee00cf0.chunk.js.map": "/static/js/390.4ee00cf0.chunk.js.map",
     "787.1ed0c42c.chunk.js.map": "/static/js/787.1ed0c42c.chunk.js.map",
     "566.fcbbbb4a.chunk.js.map": "/static/js/566.fcbbbb4a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b4caa42.css",
-    "static/js/main.03f471b9.js"
+    "static/css/main.28839268.css",
+    "static/js/main.44598461.js"
   ]
 }
