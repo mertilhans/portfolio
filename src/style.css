@@ -59,38 +59,202 @@ button {
 /* --------- */
 /*  Preloader */
 /* --------- */
-#preloader {
+.preloader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 999999;
-  background: var(--bg);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 22px;
+  background: var(--bg);
+  transition: opacity 0.5s ease 0.25s, visibility 0s linear 0.75s;
 }
 
-/* Ince, donen bir halka. */
-#preloader::before {
-  content: "";
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 2px solid var(--border-strong);
-  border-top-color: var(--accent);
-  animation: preloader-spin 0.8s linear infinite;
+.preloader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-@keyframes preloader-spin {
-  to {
-    transform: rotate(360deg);
+/* Kucuk kara delik sahnesi. */
+.bh {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  animation: bh-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes bh-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
   }
 }
 
-#preloader-none {
+.bh > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+/* Olay ufku: siyah cekirdek, ince parlak halka ve hafif mavi isik. */
+.bh-core {
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border-radius: 50%;
+  background: #000;
+  box-shadow:
+    0 0 0 1.5px rgba(220, 235, 255, 0.9),
+    0 0 10px 1px rgba(var(--accent-rgb), 0.8),
+    0 0 34px 6px rgba(var(--accent-rgb), 0.25);
+  transition: transform 0.45s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Egik disk yorungesi: ince bir elips, uzerinde donen parlak bir yay. */
+.bh-orbit {
+  width: 92px;
+  height: 92px;
+  margin: -46px 0 0 -46px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(var(--accent-rgb), 0.15) 120deg,
+    rgba(220, 235, 255, 0.95) 170deg,
+    transparent 180deg,
+    transparent 360deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 66%, #000 68%, #000 71%, transparent 73%);
+  mask: radial-gradient(circle, transparent 66%, #000 68%, #000 71%, transparent 73%);
+  transform: rotate(-12deg) scaleY(0.3);
+  transition: opacity 0.3s ease;
+}
+
+.bh-orbit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--accent-rgb), 0.18);
+}
+
+.bh-orbit {
+  animation: bh-orbit 1.4s linear infinite;
+}
+
+@keyframes bh-orbit {
+  from {
+    transform: rotate(-12deg) scaleY(0.3) rotate(0deg);
+  }
+  to {
+    transform: rotate(-12deg) scaleY(0.3) rotate(360deg);
+  }
+}
+
+/* Parcaciklar: her biri disaridan sarmal cizerek cekirdege dusuyor. Dis
+   kap donuyor, icteki nokta merkeze yaklasiyor; ikisi birlikte sarmal. */
+.bh-particle {
+  width: 0;
+  height: 0;
+  transform: rotate(calc(var(--i) * 45deg));
+  animation: bh-swirl 1.8s cubic-bezier(0.5, 0, 0.9, 0.6) infinite;
+  animation-delay: calc(var(--i) * -0.225s);
+}
+
+.bh-particle::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  margin: -1.5px 0 0 -1.5px;
+  border-radius: 50%;
+  background: #dbe8ff;
+  box-shadow: 0 0 6px 1px rgba(var(--accent-rgb), 0.9);
+  animation: bh-fall 1.8s cubic-bezier(0.5, 0, 0.9, 0.6) infinite;
+  animation-delay: inherit;
+}
+
+@keyframes bh-swirl {
+  to {
+    transform: rotate(calc(var(--i) * 45deg + 400deg));
+  }
+}
+
+@keyframes bh-fall {
+  0% {
+    transform: translateX(58px) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(12px) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* Ince yukleme cizgisi: acilis suresince doluyor. */
+.preloader-bar {
+  position: relative;
+  width: 120px;
+  height: 1px;
+  background: var(--border);
+  overflow: hidden;
+  animation: pre-fade 0.8s ease 0.2s both;
+}
+
+.preloader-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, var(--accent), #dbe8ff);
+  transform-origin: left;
+  animation: pre-bar 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes pre-fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes pre-bar {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* Cikis: cekirdek icine cokuyor, yorunge ve parcaciklar sonuyor. */
+.preloader.is-done .bh-core {
+  transform: scale(0);
+}
+
+.preloader.is-done .bh-orbit,
+.preloader.is-done .bh-particle {
   opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bh,
+  .bh-orbit,
+  .bh-particle,
+  .bh-particle::after,
+  .preloader-bar,
+  .preloader-bar::after {
+    animation: none;
+  }
+  .bh-particle {
+    display: none;
+  }
 }
 
 #no-scroll {
