@@ -218,7 +218,7 @@ function staticDocs() {
       ],
       reply: () => ({
         text:
-          "Email is the quickest: mertilhanbv@gmail.com. GitHub (github.com/mertilhans) and LinkedIn are linked in the footer and on the home page too.",
+          "Email is the quickest: mertilhanbv@gmail.com. GitHub (github.com/itsmertilhan) and LinkedIn are linked in the footer and on the home page too.",
       }),
     },
     {
