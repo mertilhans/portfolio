@@ -7,7 +7,7 @@
   (gizli sekme, dolu kota) onbelleksiz calismaya devam eder.
 */
 
-export const GITHUB_USER = "mertilhans";
+export const GITHUB_USER = "itsmertilhan";
 
 const CACHE_KEY = "gh-repo-stats";
 const CACHE_TTL = 60 * 60 * 1000;

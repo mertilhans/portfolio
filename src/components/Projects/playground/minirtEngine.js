@@ -1,5 +1,5 @@
 /*
-  mertilhans/MiniRT deposunun JavaScript karsiligi. Fonksiyon adlari C'deki
+  itsmertilhan/MiniRT deposunun JavaScript karsiligi. Fonksiyon adlari C'deki
   karsiliklarini gosteriyor. Kayan nokta islemleri C'deki sirayla yaziliyor
   (vec_norm 1/len ile carpar, toplamalar soldan saga), boylece cikti
   derlenmis programinkiyle piksel piksel ayni kaliyor; bunu

@@ -9,7 +9,7 @@ import techIcon from "./techIcons";
 
 // Depo adindan GitHub adresini kurar; projectData icindeki "repo" alani
 // GitHub'daki ad ile birebir ayni oldugu icin baska bir esleme gerekmiyor.
-const repoUrl = (repo) => `https://github.com/mertilhans/${repo}`;
+const repoUrl = (repo) => `https://github.com/itsmertilhan/${repo}`;
 
 function formatDate(iso) {
   if (!iso) return null;

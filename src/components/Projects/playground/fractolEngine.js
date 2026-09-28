@@ -1,5 +1,5 @@
 /*
-  mertilhans/fractol deposunun JavaScript karsiligi. Her fonksiyonun
+  itsmertilhan/fractol deposunun JavaScript karsiligi. Her fonksiyonun
   basinda C'deki adi yaziyor; formuller, sabitler ve dallanmalar ayni.
   Yalnizca MiniLibX'in penceresi ve goruntu tamponu yerine bir canvas
   tamponu (Uint32Array) kullaniliyor.

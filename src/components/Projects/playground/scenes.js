@@ -1,5 +1,5 @@
 /*
-  mertilhans/MiniRT deposundaki .rt sahneleri, dosyalardaki haliyle.
+  itsmertilhan/MiniRT deposundaki .rt sahneleri, dosyalardaki haliyle.
   Parser bunlari C surumuyle ayni kurallarla okuyor.
 */
 
